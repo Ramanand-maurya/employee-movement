@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/employee-movement/static/css/main.60da39ec.css",
+    "main.js": "/employee-movement/static/js/main.aa277e08.js",
+    "static/js/453.e769519e.chunk.js": "/employee-movement/static/js/453.e769519e.chunk.js",
+    "static/media/secondImage.jpg": "/employee-movement/static/media/secondImage.070d203a6e36ab4f78db.jpg",
+    "index.html": "/employee-movement/index.html",
+    "main.60da39ec.css.map": "/employee-movement/static/css/main.60da39ec.css.map",
+    "main.aa277e08.js.map": "/employee-movement/static/js/main.aa277e08.js.map",
+    "453.e769519e.chunk.js.map": "/employee-movement/static/js/453.e769519e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.60da39ec.css",
+    "static/js/main.aa277e08.js"
+  ]
+}

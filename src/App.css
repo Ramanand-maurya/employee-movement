@@ -117,3 +117,9 @@
   margin: 0 auto;
   z-index: 0;
 }
+@media (max-width: 576px) {
+  .employee-icon{
+    width: 10px;
+    height: 10px;
+  }
+}

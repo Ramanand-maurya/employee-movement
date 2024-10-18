@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import initialPositions from "../data/initial_positions1.json";
 import updatedPositions from "../data/updated_positions1.json";
 import floorPlan from "../images/secondImage.jpg";
-
+import Modal from "./Model";
 const initialZones = [
   { id: "Zone 1", x: 180, y: 240, xd: -640, yd: 165, width: 250, height: 250 },
   { id: "Zone 2", x: 420, y: 200, xd: -620, yd: 25, width: 550, height: 550 },
@@ -21,9 +21,11 @@ const ZonesData = [
 function EmployeeMap() {
   const [positions, setPositions] = useState(initialPositions);
   const [zones, setZones] = useState(initialZones);
+  const [open, setOpen] = useState(false);
+  const [data, setData] = useState();
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 768) {
+      if (window.innerWidth < 768 && window.innerWidth > 420) {
         setZones((prevZones) =>
           prevZones.map((zone) => {
             if (zone.id === "Zone 1") {
@@ -40,25 +42,27 @@ function EmployeeMap() {
             return zone;
           })
         );
-      }if (window.innerWidth < 576) {
+      }
+      else if (window.innerWidth < 420) {
         setZones((prevZones) =>
           prevZones.map((zone) => {
             if (zone.id === "Zone 1") {
-              return { ...zone, x: 110, y: 130, xd: -300, yd: 120, width: 100, height: 100 };
+              return { ...zone, x: 80, y: 100, xd: -230, yd: 90, width: 80, height: 80 };
             } else if (zone.id === "Zone 2") {
-              return { ...zone, x: 180, y: 50, xd: -330, yd: 35, width: 280, height: 280 };
+              return { ...zone, x: 130, y: 65, xd: -230, yd: 45, width: 180, height: 180 };
             }
             else if (zone.id === "Zone 3") {
-              return { ...zone, x: 310, y: 100, xd: -330, yd: -90, width: 550, height: 550 };
+              return { ...zone, x: 220, y: 80, xd: -210, yd: -30, width: 350, height: 350 };
             }
             else if (zone.id === "Zone 4") {
-              return { ...zone, x: 450, y: 0, xd: -300, yd: -220, width: 900, height: 900 };
+              return { ...zone, x: 315, y: 30, xd: -200, yd: -140, width: 600, height: 600 };
             }
             return zone;
           })
         );
-      } else {
-        setZones(initialZones);
+      }
+       else {
+       setZones(initialZones);
       }
     };
     window.addEventListener("resize", handleResize);
@@ -74,7 +78,8 @@ function EmployeeMap() {
     return () => clearTimeout(timer);
   }, []);
   const handleEmployeeClick = (employee) => {
-    alert(`Employee: ${employee.firstName}, Zone: ${employee.zone}`);
+    setData(employee);
+    setOpen(!open);
   };
   function getZoneCoordinates(zoneId) {
     const zone = zones.find((z) => z.id === zoneId);
@@ -111,6 +116,7 @@ function EmployeeMap() {
           );
         })}
       </div>
+      <Modal modalFun={handleEmployeeClick} modalState={open} data={data}  />
     </div>
   );
 }

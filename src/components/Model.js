@@ -6,10 +6,10 @@ export default function Modal({modalFun,modalState,data}) {
         <div className="modal-inner">
           <h3>Employee Detail</h3>
           <p>
-          Employee Name: <strong>{data.firstName}</strong> 
+          Employee Name: <strong>{data?.firstName}</strong> 
           </p>
           <p>
-          Employee Zone: <strong>{data.zone}</strong> 
+          Employee Zone: <strong>{data?.zone}</strong> 
           </p>
           <button className="cm-btn" onClick={modalFun}>Close</button>
         </div>
